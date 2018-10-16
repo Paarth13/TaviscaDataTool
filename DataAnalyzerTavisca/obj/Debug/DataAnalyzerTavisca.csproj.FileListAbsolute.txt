@@ -513,6 +513,8 @@ C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\Syst
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\System.Xml.XPath.dll
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\System.Xml.XPath.XDocument.dll
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\CacheManager.StackExchange.Redis.dll
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\Caching.dll
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\Database.dll
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\Newtonsoft.Json.dll
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\Pipelines.Sockets.Unofficial.dll
@@ -528,6 +530,11 @@ C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\Syst
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\System.Threading.Tasks.Extensions.dll
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\System.Web.Http.dll
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\System.Web.Http.WebHost.dll
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\StackExchange.Redis.StrongName.dll
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\Caching.pdb
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\Caching.dll.config
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\Database.pdb
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\Database.dll.config
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\CacheManager.StackExchange.Redis.xml
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\Newtonsoft.Json.xml
@@ -543,6 +550,7 @@ C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\Syst
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\System.Web.Http.xml
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\System.Web.Http.WebHost.xml
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\bin\StackExchange.Redis.StrongName.xml
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\obj\Debug\DataAnalyzerTavisca.csprojResolveAssemblyReference.cache
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\obj\Debug\DataAnalyzerTavisca.csproj.CoreCompileInputs.cache
 C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca\obj\Debug\DataAnalyzerTavisca.dll

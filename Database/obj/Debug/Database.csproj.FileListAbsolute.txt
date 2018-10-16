@@ -1,0 +1,9 @@
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\Database\bin\Debug\Database.dll.config
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\Database\bin\Debug\Database.dll
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\Database\bin\Debug\Database.pdb
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\Database\bin\Debug\Newtonsoft.Json.dll
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\Database\bin\Debug\Newtonsoft.Json.xml
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\Database\obj\Debug\Database.csprojResolveAssemblyReference.cache
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\Database\obj\Debug\Database.csproj.CoreCompileInputs.cache
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\Database\obj\Debug\Database.dll
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\Database\obj\Debug\Database.pdb

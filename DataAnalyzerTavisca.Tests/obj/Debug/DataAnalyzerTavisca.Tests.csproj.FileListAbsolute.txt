@@ -1,0 +1,2 @@
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca.Tests\obj\Debug\DataAnalyzerTavisca.Tests.csprojResolveAssemblyReference.cache
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\DataAnalyzerTavisca.Tests\obj\Debug\DataAnalyzerTavisca.Tests.csproj.CoreCompileInputs.cache

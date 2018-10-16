@@ -122,18 +122,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Cache\ICache.cs" />
-    <Compile Include="Models\Cache\RedisCache.cs" />
-    <Compile Include="Models\Cache\redisConnector.cs" />
-    <Compile Include="Models\DataBases\IRepository.cs" />
-    <Compile Include="Models\DataBases\SqlDatabase.cs" />
-    <Compile Include="Models\QueryFormat.cs" />
-    <Compile Include="Models\ReturnClass\Cities.cs" />
-    <Compile Include="Models\ReturnClass\FailuresInBooking.cs" />
-    <Compile Include="Models\ReturnClass\HotelNamesWithBookings.cs" />
-    <Compile Include="Models\ReturnClass\IndividualSupplierBookings.cs" />
-    <Compile Include="Models\ReturnClass\LocationWithDates.cs" />
-    <Compile Include="Models\ReturnClass\PaymentDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +135,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Caching\Caching.csproj">
+      <Project>{8f9ca719-64d2-46a0-97ee-5e4b5a6c705b}</Project>
+      <Name>Caching</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Database\Database.csproj">
+      <Project>{f8a10e06-ab09-4ff6-80e1-fec39dbc17e0}</Project>
+      <Name>Database</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

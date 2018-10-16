@@ -1,6 +1,5 @@
-﻿using DataAnalyzerTavisca.Models;
-using DataAnalyzerTavisca.Models.Cache;
-using DataAnalyzerTavisca.Models.ReturnClass;
+﻿using Caching;
+using Database.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -8,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Caching;
 using System.Web.Http;
 
 namespace DataAnalyzerTavisca.Controllers
