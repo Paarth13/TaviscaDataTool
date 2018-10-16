@@ -16,8 +16,8 @@ namespace DataAnalyzerTavisca.Controllers
     {
         // GET: api/Hotels
         [HttpGet]
-        [Route("api/Hotels")]
-        public object GetAllHotels()
+        [Route("api/HotelLocations")]
+        public object GetAllLocations()
         {
             ICache cache = new RedisCache();
             Cities ListOfCities = JsonConvert.DeserializeObject<Cities>(cache.GetAllLocationsCache()); ;
