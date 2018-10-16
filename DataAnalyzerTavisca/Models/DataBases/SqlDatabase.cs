@@ -16,9 +16,8 @@ namespace DataAnalyzerTavisca.Models.DataBases
         private SqlConnection connector;
         private void Connection()
         {
-            string constr = @"Data Source=54.86.216.216;Initial Catalog=qaTripDataWareHouse_Sync;User ID=readonlynewbies2018;Password=Tavisca@123";
-            connector = new SqlConnection(constr);
-
+            string connectionString = @"Data Source=54.86.216.216;Initial Catalog=qaTripDataWareHouse_Sync;User ID=readonlynewbies2018;Password=Tavisca@123";
+            connector = new SqlConnection(connectionString);
         }
         public string GetAllLocationsDatabase()
         {
@@ -29,46 +28,41 @@ namespace DataAnalyzerTavisca.Models.DataBases
             {
                 CommandType = CommandType.Text
             };
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+            DataTable dataTable= new DataTable();
             connector.Open();
-            da.Fill(dt);
+            dataAdapter.Fill(dataTable);
             connector.Close();
-            foreach (DataRow dr in dt.Rows)
+            foreach (DataRow dataRow in dataTable.Rows)
             {
-
-
-                cities.City.Add(Convert.ToString(dr["City"]));
-
+                cities.City.Add(Convert.ToString(dataRow["City"]));
             }
             var json = JsonConvert.SerializeObject(cities);
             return json;
         }
 
-        public string LocationWithDatesDatabases(QueryFormat query)
+        public string LocationWithDatesDatabases(QueryFormat queryFormat)
         {
             Connection();
             List<LocationWithDates> list = new List<LocationWithDates>();
-            string statement = $"SELECT (t3.City),(t3.HotelName),Count(t3.City) as Bookings FROM TripFolders t1 JOIN TripProducts t2 ON t1.FolderId = t2.TripFolderId JOIN HotelSegments t3 ON t2.Id = t3.TripProductId JOIN PassengerSegments t4 ON t4.TripProductId=t2.Id where t3.StayPeriodStart between '{query.FromDate}' and '{query.ToDate}'  and t4.BookingStatus='Purchased' group by t3.HotelName,t3.city,t3.StayPeriodStart;";
-            SqlCommand command = new SqlCommand(statement, connector)
+            string query = $"SELECT (t3.City),(t3.HotelName),Count(t3.City) as Bookings FROM TripFolders t1 JOIN TripProducts t2 ON t1.FolderId = t2.TripFolderId JOIN HotelSegments t3 ON t2.Id = t3.TripProductId JOIN PassengerSegments t4 ON t4.TripProductId=t2.Id where t3.StayPeriodStart between '{queryFormat.FromDate}' and '{queryFormat.ToDate}'  and t4.BookingStatus='Purchased' group by t3.HotelName,t3.city,t3.StayPeriodStart;";
+            SqlCommand command = new SqlCommand(query, connector)
             {
                 CommandType = CommandType.Text
             };
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
             connector.Open();
-            da.Fill(dt);
+            dataAdapter.Fill(dataTable);
             connector.Close();
-            foreach (DataRow dr in dt.Rows)
+            foreach (DataRow dataRow in dataTable.Rows)
             {
 
                 LocationWithDates locationWithDates = new LocationWithDates();
                 Location hotelAndBookings = new Location();
-                string city = Convert.ToString(dr["City"]);
-
-
-                hotelAndBookings.HotelName = Convert.ToString(dr["HotelName"]);
-                hotelAndBookings.Bookings = Convert.ToInt32(dr["Bookings"]);
+                string city = Convert.ToString(dataRow["City"]);
+                hotelAndBookings.HotelName = Convert.ToString(dataRow["HotelName"]);
+                hotelAndBookings.Bookings = Convert.ToInt32(dataRow["Bookings"]);
                 if (list.Exists(existingAlready => existingAlready.Place == city))
                 {
                     list[list.FindIndex(existingAlready => existingAlready.Place == city)].location.Add(hotelAndBookings);
@@ -83,111 +77,106 @@ namespace DataAnalyzerTavisca.Models.DataBases
                 }
             }
             var json = JsonConvert.SerializeObject(list);
-            // var output = json.Replace("\"", "");
-
             return json;
         }
-
-        public string HotelNameWithDatesDatabases(QueryFormat query)
+        public string HotelNameWithDatesDatabases(QueryFormat queryFormat)
         {
             Connection();
             List<HotelNamesWithBookings> list = new List<HotelNamesWithBookings>();
-            string statement = $"SELECT (t3.HotelName),Count(t3.City) as Bookings FROM TripFolders     t1 JOIN    TripProducts t2 ON t1.FolderId = t2.TripFolderId JOIN HotelSegments  t3 ON t2.Id = t3.TripProductId JOIN PassengerSegments t4 ON t4.TripProductId=t2.Id where t3.StayPeriodStart between '{query.FromDate}' and '{query.ToDate}'  and t3.City='{query.Filter}' and t4.BookingStatus='Purchased' group by t3.HotelName,t3.StayPeriodStart ;";
-            SqlCommand command = new SqlCommand(statement, connector)
+            string query = $"SELECT (t3.HotelName),Count(t3.City) as Bookings FROM TripFolders t1 JOIN TripProducts t2 ON t1.FolderId = t2.TripFolderId JOIN HotelSegments t3 ON t2.Id = t3.TripProductId JOIN PassengerSegments t4 ON t4.TripProductId=t2.Id where t3.StayPeriodStart between '{queryFormat.FromDate}' and '{queryFormat.ToDate}'  and t3.City='{queryFormat.Filter}' and t4.BookingStatus='Purchased' group by t3.HotelName,t3.StayPeriodStart ;";
+            SqlCommand command = new SqlCommand(query, connector)
             {
                 CommandType = CommandType.Text
             };
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
             connector.Open();
-            da.Fill(dt);
+            dataAdapter.Fill(dataTable);
             connector.Close();
-            foreach (DataRow dr in dt.Rows)
+            foreach (DataRow dataRow in dataTable.Rows)
             {
                 HotelNamesWithBookings hotelNamesWithBookings = new HotelNamesWithBookings();
-                hotelNamesWithBookings.HotelName = Convert.ToString(dr["HotelName"]);
-                hotelNamesWithBookings.Bookings = Convert.ToInt32(dr["Bookings"]);
+                hotelNamesWithBookings.HotelName = Convert.ToString(dataRow["HotelName"]);
+                hotelNamesWithBookings.Bookings = Convert.ToInt32(dataRow["Bookings"]);
                 list.Add(hotelNamesWithBookings);
             }
             var json = JsonConvert.SerializeObject(list);
             return json;
         }
-
-        public string SupplierNamesWithDatesDatabase(QueryFormat query)
+        public string SupplierNamesWithDatesDatabase(QueryFormat queryFormat)
         {
             Connection();
             List<IndividualSupplierBookings> list = new List<IndividualSupplierBookings>();
-            string statement = $"SELECT (t3.SupplierFamily),Count(t3.City) as Bookings FROM TripFolders     t1 JOIN    TripProducts t2 ON t1.FolderId = t2.TripFolderId JOIN HotelSegments  t3 ON t2.Id = t3.TripProductId JOIN PassengerSegments t4 ON t4.TripProductId=t2.Id where t3.StayPeriodStart between '{query.FromDate}' and '{query.ToDate}'  and t3.City='{query.Filter}' and t4.BookingStatus='Purchased' group by t3.SupplierFamily,t3.city,t3.StayPeriodStart ;";
-            SqlCommand command = new SqlCommand(statement, connector)
+            string query = $"SELECT (t3.SupplierFamily),Count(t3.City) as Bookings FROM TripFolders t1 JOIN TripProducts t2 ON t1.FolderId = t2.TripFolderId JOIN HotelSegments t3 ON t2.Id = t3.TripProductId JOIN PassengerSegments t4 ON t4.TripProductId=t2.Id where t3.StayPeriodStart between '{queryFormat.FromDate}' and '{queryFormat.ToDate}' and t3.City='{queryFormat.Filter}' and t4.BookingStatus='Purchased' group by t3.SupplierFamily,t3.city,t3.StayPeriodStart ;";
+            SqlCommand command = new SqlCommand(query, connector)
             {
                 CommandType = CommandType.Text
             };
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
             connector.Open();
-            da.Fill(dt);
+            dataAdapter.Fill(dataTable);
             connector.Close();
-            foreach (DataRow dr in dt.Rows)
+            foreach (DataRow dataRow in dataTable.Rows)
             {
-                string supplierFamilyname = Convert.ToString(dr["SupplierFamily"]);
+                string supplierFamilyname = Convert.ToString(dataRow["SupplierFamily"]);
                 IndividualSupplierBookings supplierNamesWithBookings = new IndividualSupplierBookings();
                 if (list.Exists(suppName => suppName.SupplierName == supplierFamilyname))
                 {
-                    list[list.FindIndex(suppName => suppName.SupplierName == supplierFamilyname)].Bookings += Convert.ToInt32(dr["Bookings"]);
+                    list[list.FindIndex(suppName => suppName.SupplierName == supplierFamilyname)].Bookings += Convert.ToInt32(dataRow["Bookings"]);
                 }
                 else
                 {
                     supplierNamesWithBookings.SupplierName = supplierFamilyname;
-                    supplierNamesWithBookings.Bookings = Convert.ToInt32(dr["Bookings"]);
+                    supplierNamesWithBookings.Bookings = Convert.ToInt32(dataRow["Bookings"]);
                     list.Add(supplierNamesWithBookings);
                 }
             }
             var json = JsonConvert.SerializeObject(list);
             return json;
         }
-
-        public string FailureCountDataBase(QueryFormat query)
+        public string FailureCountDataBase(QueryFormat queryFormat)
         {
             Connection();
             FailuresInBooking failuresInBooking = new FailuresInBooking();
-            string statement = $"SELECT COUNT(t3.BookingStatus) as Failure FROM HotelSegments     t1 JOIN    TripProducts t2 ON t1.TripProductId = t2.Id JOIN PassengerSegments  t3 ON t2.Id = t3.TripProductId where t2.ModifiedDate between '{query.FromDate}' and '{query.ToDate}' and t3.BookingStatus ='Planned' and t1.City='{query.Filter}';";
-            SqlCommand command = new SqlCommand(statement, connector)
+            string query = $"SELECT COUNT(t3.BookingStatus) as Failure FROM HotelSegments t1 JOIN TripProducts t2 ON t1.TripProductId = t2.Id JOIN PassengerSegments  t3 ON t2.Id = t3.TripProductId where t2.ModifiedDate between '{queryFormat.FromDate}' and '{queryFormat.ToDate}' and t3.BookingStatus ='Planned' and t1.City='{queryFormat.Filter}';";
+            SqlCommand command = new SqlCommand(query, connector)
             {
                 CommandType = CommandType.Text
             };
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
             connector.Open();
-            da.Fill(dt);
+            dataAdapter.Fill(dataTable);
             connector.Close();
-            foreach (DataRow dr in dt.Rows)
+            foreach (DataRow dataRow in dataTable.Rows)
             {
-                failuresInBooking.count = Convert.ToInt32(dr["Failure"]);
+                failuresInBooking.count = Convert.ToInt32(dataRow["Failure"]);
 
             }
             var json = JsonConvert.SerializeObject(failuresInBooking);
             return json;
         }
 
-        public string PaymentDetailsDatabase(QueryFormat query)
+        public string PaymentDetailsDatabase(QueryFormat queryFormat)
         {
             Connection();
             List<PaymentDetails> list = new List<PaymentDetails>();
-            string statement = $"SELECT t3.PaymentType,Count(t3.PaymentType) as Bookings   FROM TripProducts t1 JOIN TripFolders t2 ON t1.TripFolderId=t2.FolderId JOIN Payments t3 ON t2.FolderId=t3.TripFolderId JOIN PassengerSegments t4 ON t1.Id=t4.TripProductId JOIN HotelSegments t5 ON t5.TripProductId = t1.Id where t5.City='{query.Filter}' and t1.ModifiedDate between  '{query.FromDate}' and '{query.ToDate}' and t4.BookingStatus='Purchased' and t1.ProductType='Hotel' group by t3.PaymentType; ";
-            SqlCommand command = new SqlCommand(statement, connector)
+            string query = $"SELECT t3.PaymentType,Count(t3.PaymentType) as Bookings   FROM TripProducts t1 JOIN TripFolders t2 ON t1.TripFolderId=t2.FolderId JOIN Payments t3 ON t2.FolderId=t3.TripFolderId JOIN PassengerSegments t4 ON t1.Id=t4.TripProductId JOIN HotelSegments t5 ON t5.TripProductId = t1.Id where t5.City='{queryFormat.Filter}' and t1.ModifiedDate between  '{queryFormat.FromDate}' and '{queryFormat.ToDate}' and t4.BookingStatus='Purchased' and t1.ProductType='Hotel' group by t3.PaymentType; ";
+            SqlCommand command = new SqlCommand(query, connector)
             {
                 CommandType = CommandType.Text
             };
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
             connector.Open();
-            da.Fill(dt);
+            dataAdapter.Fill(dataTable);
             connector.Close();
-            foreach (DataRow dr in dt.Rows)
+            foreach (DataRow dataRow in dataTable.Rows)
             {
                 PaymentDetails paymentDetails = new PaymentDetails();
-               paymentDetails.PaymentType = Convert.ToString(dr["PaymentType"]);
-                paymentDetails.NumberOfBooking = Convert.ToInt32(dr["Bookings"]);
+               paymentDetails.PaymentType = Convert.ToString(dataRow["PaymentType"]);
+                paymentDetails.NumberOfBooking = Convert.ToInt32(dataRow["Bookings"]);
                 list.Add(paymentDetails);
             }
             var json = JsonConvert.SerializeObject(list);
