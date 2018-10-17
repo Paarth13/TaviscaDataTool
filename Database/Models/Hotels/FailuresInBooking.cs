@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace TaviscaDataAnalyzerDatabase.Models
+namespace TaviscaDataAnalyzerDatabase.Models.Hotels
 {
     public class FailuresInBooking
     {

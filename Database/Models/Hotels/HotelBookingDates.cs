@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaviscaDataAnalyzerDatabase.Models
+namespace TaviscaDataAnalyzerDatabase.Models.Hotels
 {
    public class HotelBookingDates
     {

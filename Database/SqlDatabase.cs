@@ -1,4 +1,4 @@
-﻿
+﻿using TaviscaDataAnalyzerDatabase.Models.Hotels;
 using TaviscaDataAnalyzerDatabase.Models;
 using Newtonsoft.Json;
 using System;
