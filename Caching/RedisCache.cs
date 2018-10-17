@@ -88,7 +88,7 @@ namespace Caching
             return result;
         }
 
-        public string LocationWithDatesCache(QueryFormat query)
+        public string HotelsAtALocationWithDatesCache(QueryFormat query)
         {
             
             string result = null;
@@ -98,7 +98,7 @@ namespace Caching
             {
                 IRepository sqlDatabase = new SqlDatabase();
 
-                result = sqlDatabase.LocationWithDatesDatabases(query);
+                result = sqlDatabase.HotelsAtALocationWithDatesDatabases(query);
 
                 redisDatabase.StringSet(data, result, TimeSpan.FromMinutes(1));
             }

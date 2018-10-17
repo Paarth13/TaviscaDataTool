@@ -10,7 +10,7 @@ namespace Caching
    public interface ICache
     {
         string GetAllLocationsCache();
-        string LocationWithDatesCache(QueryFormat query);
+        string HotelsAtALocationWithDatesCache(QueryFormat query);
         string HotelNameWithDatesCache(QueryFormat query);
 
         string SupplierNamesWithDatesCache(QueryFormat query);

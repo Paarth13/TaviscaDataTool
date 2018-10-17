@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Database.Models
 {
-    public class LocationWithDates
+    public class HotelsInALocationWithDates
     {
        public string Place { get; set; }
         public List<HotelsAtLocation> HotelsAtParticularLocation = new List<HotelsAtLocation>();

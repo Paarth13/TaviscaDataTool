@@ -30,7 +30,7 @@ namespace DataAnalyzerTavisca.Controllers
         {
             QueryFormat query = new QueryFormat { ToDate = toDate, FromDate = fromDate };
             ICache cache = new RedisCache();
-            List<LocationWithDates> ListOfHotelsWithDates = JsonConvert.DeserializeObject<List<LocationWithDates>>(cache.LocationWithDatesCache(query));
+            List<HotelsInALocationWithDates> ListOfHotelsWithDates = JsonConvert.DeserializeObject<List<HotelsInALocationWithDates>>(cache.HotelsAtALocationWithDatesCache(query));
             return ListOfHotelsWithDates;
         }
 

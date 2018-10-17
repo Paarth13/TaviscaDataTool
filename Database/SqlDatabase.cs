@@ -36,10 +36,10 @@ namespace Database
             return json;
         }
 
-        public string LocationWithDatesDatabases(QueryFormat queryFormat)
+        public string HotelsAtALocationWithDatesDatabases(QueryFormat queryFormat)
         {
             var connector = sqlConnector.ConnectionEstablisher();
-            List<LocationWithDates> list = new List<LocationWithDates>();
+            List<HotelsInALocationWithDates> list = new List<HotelsInALocationWithDates>();
             string query = $"SELECT (t3.City),(t3.HotelName),Count(t3.City) as Bookings FROM TripFolders t1 JOIN TripProducts t2 ON t1.FolderId = t2.TripFolderId JOIN HotelSegments t3 ON t2.Id = t3.TripProductId JOIN PassengerSegments t4 ON t4.TripProductId=t2.Id where t3.StayPeriodStart between '{queryFormat.FromDate}' and '{queryFormat.ToDate}' and t2.ProductType='Hotel'  and t4.BookingStatus='Purchased' group by t3.HotelName,t3.city,t3.StayPeriodStart;";
             SqlCommand command = new SqlCommand(query, connector)
             {
@@ -53,7 +53,7 @@ namespace Database
             foreach (DataRow dataRow in dataTable.Rows)
             {
 
-                LocationWithDates locationWithDates = new LocationWithDates();
+                HotelsInALocationWithDates locationWithDates = new HotelsInALocationWithDates();
                 HotelsAtLocation hotelAndBookings = new HotelsAtLocation();
                 string city = Convert.ToString(dataRow["City"]);
                 hotelAndBookings.HotelName = Convert.ToString(dataRow["HotelName"]);

@@ -10,7 +10,7 @@ namespace Database
     public interface IRepository
     {
         string GetAllLocationsDatabase();
-        string LocationWithDatesDatabases(QueryFormat query);
+        string HotelsAtALocationWithDatesDatabases(QueryFormat query);
 
         string SupplierNamesWithDatesDatabase(QueryFormat query);
         string HotelNameWithDatesDatabases(QueryFormat query);
