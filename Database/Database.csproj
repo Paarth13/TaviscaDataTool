@@ -34,6 +34,7 @@
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Models\Cities.cs" />
     <Compile Include="Models\FailuresInBooking.cs" />
+    <Compile Include="Models\HotelBookingDates.cs" />
     <Compile Include="Models\HotelNamesWithBookings.cs" />
     <Compile Include="Models\IndividualSupplierBookings.cs" />
     <Compile Include="Models\LocationWithDates.cs" />

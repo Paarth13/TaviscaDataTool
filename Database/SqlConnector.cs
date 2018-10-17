@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Database
         private SqlConnection connector;
         private SqlConnection Connection()
         {
-            string connectionString = @"Data Source=54.86.216.216;Initial Catalog=qaTripDataWareHouse_Sync;User ID=readonlynewbies2018;Password=Tavisca@123";
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
             connector = new SqlConnection(connectionString);
             return connector;
         }

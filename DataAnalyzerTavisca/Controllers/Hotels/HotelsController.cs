@@ -72,5 +72,15 @@ namespace DataAnalyzerTavisca.Controllers
             List<PaymentDetails> payment   = JsonConvert.DeserializeObject<List<PaymentDetails>>(cache.PaymentDetailsCache(query));
             return payment;
         }
+
+        [HttpGet]
+        [Route("api/Hotels/BookingDates")]
+        public object GetBookingDates([FromUri] string fromDate, string toDate, string location)
+        {
+            QueryFormat query = new QueryFormat { ToDate = toDate, FromDate = fromDate, Filter = location };
+            ICache cache = new RedisCache();
+            List<HotelBookingDates> hotelBookingDates = JsonConvert.DeserializeObject<List<HotelBookingDates>>(cache.BookingDatesCache(query));
+            return hotelBookingDates;
+        }
     }
 }

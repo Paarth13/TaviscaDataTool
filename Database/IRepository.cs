@@ -14,7 +14,8 @@ namespace Database
 
         string SupplierNamesWithDatesDatabase(QueryFormat query);
         string HotelNameWithDatesDatabases(QueryFormat query);
+        string BookingDatesDatabase(QueryFormat query);
         string FailureCountDataBase(QueryFormat query);
-        string PaymentDetailsDatabase(QueryFormat query);
+        string PaymentDetailsDatabase(QueryFormat query); 
     }
 }

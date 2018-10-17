@@ -177,6 +177,43 @@ namespace Database
             var json = JsonConvert.SerializeObject(list);
             return json;
         }
+
+        public string BookingDatesDatabase(QueryFormat queryFormat)
+        {
+            var connector = sqlConnector.ConnectionEstablisher();
+            List<HotelBookingDates> list = new List<HotelBookingDates>();
+            string query = $"SELECT  t1.ModifiedDate ,COUNT(t1.ModifiedDate) AS Bookings FROM TripProducts t1 JOIN PassengerSegments t2 ON t1.Id=t2.TripProductId JOIN  HotelSegments t3 ON t3.TripProductId=t1.Id where t1.ProductType='Hotel' AND t2.BookingStatus='Purchased' AND  t3.City='{queryFormat.Filter}' AND t1.ModifiedDate between '{queryFormat.FromDate}' and '{queryFormat.ToDate}' group by t1.ModifiedDate;  ";
+            SqlCommand command = new SqlCommand(query, connector)
+            {
+                CommandType = CommandType.Text
+            };
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
+            connector.Open();
+            dataAdapter.Fill(dataTable);
+            connector.Close();
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+
+                HotelBookingDates hotelBookingDates = new HotelBookingDates();
+                
+                string bookingDate = Convert.ToString(dataRow["ModifiedDate"]);
+                bookingDate = bookingDate.Substring(0, 9);
+                if (list.Exists(existingAlready => existingAlready.BookingDates == bookingDate))
+                {
+                    
+                    list[list.FindIndex(existingAlready => existingAlready.BookingDates == bookingDate)].NumberOfBookings += Convert.ToInt32(dataRow["Bookings"]);
+                }
+                else
+                {
+                    hotelBookingDates.BookingDates = bookingDate;
+                    hotelBookingDates.NumberOfBookings = Convert.ToInt32(dataRow["Bookings"]);
+                    list.Add(hotelBookingDates);
+                }
+            }
+            var json = JsonConvert.SerializeObject(list);
+            return json;
+        }
     }
 }
 

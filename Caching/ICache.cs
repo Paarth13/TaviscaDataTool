@@ -16,5 +16,6 @@ namespace Caching
         string SupplierNamesWithDatesCache(QueryFormat query);
         string FailureCountCache(QueryFormat query);
         string PaymentDetailsCache(QueryFormat query);
+        string BookingDatesCache(QueryFormat query);
     }
 }
