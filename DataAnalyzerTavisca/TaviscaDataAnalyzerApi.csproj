@@ -137,13 +137,13 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Caching\Caching.csproj">
-      <Project>{8f9ca719-64d2-46a0-97ee-5e4b5a6c705b}</Project>
-      <Name>Caching</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Database\Database.csproj">
+    <ProjectReference Include="..\Database\TaviscaDataAnalyzerDatabase.csproj">
       <Project>{f8a10e06-ab09-4ff6-80e1-fec39dbc17e0}</Project>
-      <Name>Database</Name>
+      <Name>TaviscaDataAnalyzerDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaviscaDataAnalyzerServiceProvider\TaviscaDataAnalyzerServiceProvider.csproj">
+      <Project>{8995b4ca-5539-4cc9-b9e8-7e6606422a2c}</Project>
+      <Name>TaviscaDataAnalyzerServiceProvider</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

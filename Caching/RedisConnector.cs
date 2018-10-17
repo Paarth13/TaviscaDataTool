@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StackExchange.Redis;
 
-namespace Caching
+namespace TaviscaDataAnalyzerCache
 {
     public class RedisConnector
     {

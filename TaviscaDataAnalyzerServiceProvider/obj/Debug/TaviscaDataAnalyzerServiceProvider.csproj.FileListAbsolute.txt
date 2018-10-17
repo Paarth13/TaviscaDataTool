@@ -1,0 +1,16 @@
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\bin\Debug\TaviscaDataAnalyzerServiceProvider.dll
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\bin\Debug\TaviscaDataAnalyzerServiceProvider.pdb
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\bin\Debug\Caching.dll
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\bin\Debug\Tavisca.DataAnalyzer.Database.dll
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\bin\Debug\StackExchange.Redis.StrongName.dll
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\bin\Debug\Newtonsoft.Json.dll
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\bin\Debug\Caching.pdb
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\bin\Debug\Caching.dll.config
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\bin\Debug\Tavisca.DataAnalyzer.Database.pdb
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\bin\Debug\Tavisca.DataAnalyzer.Database.dll.config
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\bin\Debug\StackExchange.Redis.StrongName.xml
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\bin\Debug\Newtonsoft.Json.xml
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\obj\Debug\TaviscaDataAnalyzerServiceProvider.csprojResolveAssemblyReference.cache
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\obj\Debug\TaviscaDataAnalyzerServiceProvider.csproj.CoreCompileInputs.cache
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\obj\Debug\TaviscaDataAnalyzerServiceProvider.dll
+C:\Users\pvashisht\source\repos\GIT\TaviscaDataTool\TaviscaDataAnalyzerServiceProvider\obj\Debug\TaviscaDataAnalyzerServiceProvider.pdb

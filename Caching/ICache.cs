@@ -1,22 +1,15 @@
-﻿using Database.Models;
+﻿using TaviscaDataAnalyzerDatabase.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Caching
+namespace TaviscaDataAnalyzerCache
 {
-   public interface ICache
+    public interface ICache
     {
-        string GetAllLocationsCache();
-        string HotelsAtALocationWithDatesCache(QueryFormat query);
-        string HotelNameWithDatesCache(QueryFormat query);
-
-        string SupplierNamesWithDatesCache(QueryFormat query);
-        string FailureCountCache(QueryFormat query);
-        string PaymentDetailsCache(QueryFormat query);
-        string BookingDatesCache(QueryFormat query);
-        string TotalHotelBookingsCache();
+        void Post(string key, string value);
+        string Get(string key);
     }
 }

@@ -1,5 +1,5 @@
-﻿using Caching;
-using Database.Models;
+﻿
+using TaviscaDataAnalyzerDatabase.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -9,18 +9,19 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Caching;
 using System.Web.Http;
+using TaviscaDataAnalyzerServiceProvider;
 
-namespace DataAnalyzerTavisca.Controllers
+namespace TaviscaDataAnalyzerApi.Controllers
 {
     public class HotelsController : ApiController
     {
-        // GET: api/Hotels
+
         [HttpGet]
         [Route("api/HotelLocations")]
         public object GetAllLocations()
         {
-            ICache cache = new RedisCache();
-            Cities ListOfCities = JsonConvert.DeserializeObject<Cities>(cache.GetAllLocationsCache()); ;
+            IWebApiServiceProvider service = new WebApiServiceProvider();
+            Cities ListOfCities = JsonConvert.DeserializeObject<Cities>(service.GetAllLocationsCache()); ;
             return ListOfCities;
         }
 
@@ -29,8 +30,8 @@ namespace DataAnalyzerTavisca.Controllers
         public object GetHotelLocationWithDates([FromUri] string fromDate, string toDate)
         {
             QueryFormat query = new QueryFormat { ToDate = toDate, FromDate = fromDate };
-            ICache cache = new RedisCache();
-            List<HotelsInALocationWithDates> ListOfHotelsWithDates = JsonConvert.DeserializeObject<List<HotelsInALocationWithDates>>(cache.HotelsAtALocationWithDatesCache(query));
+            IWebApiServiceProvider service = new WebApiServiceProvider();
+            List<HotelsInALocationWithDates> ListOfHotelsWithDates = JsonConvert.DeserializeObject<List<HotelsInALocationWithDates>>(service.HotelsAtALocationWithDatesCache(query));
             return ListOfHotelsWithDates;
         }
 
@@ -39,8 +40,8 @@ namespace DataAnalyzerTavisca.Controllers
         public object GetHotelNamesWithDates([FromUri] string fromDate, string toDate, string location)
         {
             QueryFormat query = new QueryFormat { ToDate = toDate, FromDate = fromDate, Filter = location };
-            ICache cache = new RedisCache();
-            List<HotelNamesWithBookings> ListOfHotelNamesWithDates = JsonConvert.DeserializeObject<List<HotelNamesWithBookings>>(cache.HotelNameWithDatesCache(query));
+            IWebApiServiceProvider service = new WebApiServiceProvider();
+            List<HotelNamesWithBookings> ListOfHotelNamesWithDates = JsonConvert.DeserializeObject<List<HotelNamesWithBookings>>(service.HotelNameWithDatesCache(query));
             return ListOfHotelNamesWithDates;
         }
 
@@ -49,8 +50,8 @@ namespace DataAnalyzerTavisca.Controllers
         public object GetSupplierNamesWithDates([FromUri] string fromDate, string toDate, string location)
         {
             QueryFormat query = new QueryFormat { ToDate = toDate, FromDate = fromDate, Filter = location };
-            ICache cache = new RedisCache();
-            List<IndividualSupplierBookings> ListOfSuppliers = JsonConvert.DeserializeObject<List<IndividualSupplierBookings>>(cache.SupplierNamesWithDatesCache(query));
+            IWebApiServiceProvider service = new WebApiServiceProvider();
+            List<IndividualSupplierBookings> ListOfSuppliers = JsonConvert.DeserializeObject<List<IndividualSupplierBookings>>(service.SupplierNamesWithDatesCache(query));
             return ListOfSuppliers;
         }
 
@@ -59,8 +60,8 @@ namespace DataAnalyzerTavisca.Controllers
         public object GetFailureCount([FromUri] string fromDate, string toDate, string location)
         {
             QueryFormat query = new QueryFormat { ToDate = toDate, FromDate = fromDate, Filter = location };
-            ICache cache = new RedisCache();
-            FailuresInBooking FailureCount = JsonConvert.DeserializeObject<FailuresInBooking>(cache.FailureCountCache(query));
+            IWebApiServiceProvider service = new WebApiServiceProvider();
+            FailuresInBooking FailureCount = JsonConvert.DeserializeObject<FailuresInBooking>(service.FailureCountCache(query));
             return FailureCount;
         }
 
@@ -69,8 +70,8 @@ namespace DataAnalyzerTavisca.Controllers
         public object GetPaymentType([FromUri] string fromDate, string toDate, string location)
         {
             QueryFormat query = new QueryFormat { ToDate = toDate, FromDate = fromDate, Filter = location };
-            ICache cache = new RedisCache();
-            List<PaymentDetails> payment   = JsonConvert.DeserializeObject<List<PaymentDetails>>(cache.PaymentDetailsCache(query));
+            IWebApiServiceProvider service = new WebApiServiceProvider();
+            List<PaymentDetails> payment = JsonConvert.DeserializeObject<List<PaymentDetails>>(service.PaymentDetailsCache(query));
             return payment;
         }
 
@@ -79,8 +80,8 @@ namespace DataAnalyzerTavisca.Controllers
         public object GetBookingDates([FromUri] string fromDate, string toDate, string location)
         {
             QueryFormat query = new QueryFormat { ToDate = toDate, FromDate = fromDate, Filter = location };
-            ICache cache = new RedisCache();
-            List<HotelBookingDates> hotelBookingDates = JsonConvert.DeserializeObject<List<HotelBookingDates>>(cache.BookingDatesCache(query));
+            IWebApiServiceProvider service = new WebApiServiceProvider();
+            List<HotelBookingDates> hotelBookingDates = JsonConvert.DeserializeObject<List<HotelBookingDates>>(service.BookingDatesCache(query));
             return hotelBookingDates;
         }
 
@@ -88,9 +89,9 @@ namespace DataAnalyzerTavisca.Controllers
         [Route("api/Hotels/TotalBookings")]
         public object GetSuccessfulCount()
         {
-            
-            ICache cache = new RedisCache();
-            List<TotalHotelBookings> totalHotelBookings = JsonConvert.DeserializeObject<List<TotalHotelBookings>>(cache.TotalHotelBookingsCache());
+
+            IWebApiServiceProvider service = new WebApiServiceProvider();
+            List<TotalHotelBookings> totalHotelBookings = JsonConvert.DeserializeObject<List<TotalHotelBookings>>(service.TotalHotelBookingsCache());
             return totalHotelBookings;
         }
 
