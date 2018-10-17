@@ -138,6 +138,22 @@ namespace Caching
             }
             return result;
         }
+
+        public string TotalHotelBookingsCache()
+        {
+            string result = null;
+            string data = "TotalHotelBookings";
+            result = redisDatabase.StringGet(data);
+            if (result == null)
+            {
+                IRepository sqlDatabase = new SqlDatabase();
+
+                result = sqlDatabase.TotalHotelBookingsDataBase();
+
+                redisDatabase.StringSet(data, result, TimeSpan.FromMinutes(1));
+            }
+            return result;
+        }
     }
 
 }

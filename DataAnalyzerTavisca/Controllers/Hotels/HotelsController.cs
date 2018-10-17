@@ -63,6 +63,7 @@ namespace DataAnalyzerTavisca.Controllers
             FailuresInBooking FailureCount = JsonConvert.DeserializeObject<FailuresInBooking>(cache.FailureCountCache(query));
             return FailureCount;
         }
+
         [HttpGet]
         [Route("api/Hotels/PaymentType")]
         public object GetPaymentType([FromUri] string fromDate, string toDate, string location)
@@ -82,5 +83,16 @@ namespace DataAnalyzerTavisca.Controllers
             List<HotelBookingDates> hotelBookingDates = JsonConvert.DeserializeObject<List<HotelBookingDates>>(cache.BookingDatesCache(query));
             return hotelBookingDates;
         }
+
+        [HttpGet]
+        [Route("api/Hotels/TotalBookings")]
+        public object GetSuccessfulCount()
+        {
+            
+            ICache cache = new RedisCache();
+            List<TotalHotelBookings> totalHotelBookings = JsonConvert.DeserializeObject<List<TotalHotelBookings>>(cache.TotalHotelBookingsCache());
+            return totalHotelBookings;
+        }
+
     }
 }

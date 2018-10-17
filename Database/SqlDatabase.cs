@@ -214,6 +214,32 @@ namespace Database
             var json = JsonConvert.SerializeObject(list);
             return json;
         }
+
+        public string TotalHotelBookingsDataBase()
+        {
+            var connector = sqlConnector.ConnectionEstablisher();
+            List<TotalHotelBookings> list = new List<TotalHotelBookings>();
+            
+            string query = $"SELECT t2.BookingStatus ,COUNT(t2.BookingStatus) As AllBookings FROM TripProducts t1 JOIN PassengerSegments t2 ON t1.Id=t2.TripProductId where t1.ProductType='Hotel' group by t2.BookingStatus;";
+            SqlCommand command = new SqlCommand(query, connector)
+            {
+                CommandType = CommandType.Text
+            };
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
+            connector.Open();
+            dataAdapter.Fill(dataTable);
+            connector.Close();
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                TotalHotelBookings totalHotelBookings = new TotalHotelBookings();
+                totalHotelBookings.Type= Convert.ToString(dataRow["BookingStatus"]);
+                totalHotelBookings.Count= Convert.ToInt32(dataRow["AllBookings"]);
+                list.Add(totalHotelBookings);
+            }
+            var json = JsonConvert.SerializeObject(list);
+            return json;
+        }
     }
 }
 

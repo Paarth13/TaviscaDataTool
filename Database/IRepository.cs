@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Database
 {
-   public interface IRepository
+    public interface IRepository
     {
         string GetAllLocationsDatabase();
         string LocationWithDatesDatabases(QueryFormat query);
@@ -16,6 +16,8 @@ namespace Database
         string HotelNameWithDatesDatabases(QueryFormat query);
         string BookingDatesDatabase(QueryFormat query);
         string FailureCountDataBase(QueryFormat query);
-        string PaymentDetailsDatabase(QueryFormat query); 
+        string PaymentDetailsDatabase(QueryFormat query);
+
+        string TotalHotelBookingsDataBase();
     }
 }

@@ -52,6 +52,7 @@
     <Compile Include="Models\LocationWithDates.cs" />
     <Compile Include="Models\PaymentDetails.cs" />
     <Compile Include="Models\QueryFormat.cs" />
+    <Compile Include="Models\TotalHotelBookings.cs" />
     <Compile Include="SqlConnector.cs" />
     <Compile Include="SqlDatabase.cs" />
     <Compile Include="IRepository.cs" />
