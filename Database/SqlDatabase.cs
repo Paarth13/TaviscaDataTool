@@ -54,18 +54,18 @@ namespace Database
             {
 
                 LocationWithDates locationWithDates = new LocationWithDates();
-                Location hotelAndBookings = new Location();
+                HotelsAtLocation hotelAndBookings = new HotelsAtLocation();
                 string city = Convert.ToString(dataRow["City"]);
                 hotelAndBookings.HotelName = Convert.ToString(dataRow["HotelName"]);
                 hotelAndBookings.Bookings = Convert.ToInt32(dataRow["Bookings"]);
                 if (list.Exists(existingAlready => existingAlready.Place == city))
                 {
-                    list[list.FindIndex(existingAlready => existingAlready.Place == city)].location.Add(hotelAndBookings);
+                    list[list.FindIndex(existingAlready => existingAlready.Place == city)].HotelsAtParticularLocation.Add(hotelAndBookings);
                     list[list.FindIndex(existingAlready => existingAlready.Place == city)].totalBookings += hotelAndBookings.Bookings;
                 }
                 else
                 {
-                    locationWithDates.location.Add(hotelAndBookings);
+                    locationWithDates.HotelsAtParticularLocation.Add(hotelAndBookings);
                     locationWithDates.Place = city;
                     locationWithDates.totalBookings += hotelAndBookings.Bookings;
                     list.Add(locationWithDates);

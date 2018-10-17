@@ -8,11 +8,11 @@ namespace Database.Models
     public class LocationWithDates
     {
        public string Place { get; set; }
-        public List<Location> location = new List<Location>();
+        public List<HotelsAtLocation> HotelsAtParticularLocation = new List<HotelsAtLocation>();
         public int totalBookings = 0;
 
     }
-    public class Location
+    public class HotelsAtLocation
     {
       public  string HotelName { get; set; }
         public int Bookings { get; set; }
